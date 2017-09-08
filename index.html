@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- <script src="./node_modules/jquery/dist/jquery.min.js" ></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script> -->
+
+    <script src="./node_modules/jquery/dist/jquery.js" ></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./node_modules/angular/angular.js"></script>
+    
+    <script src="./app.js" ></script>
+    <title>Syslog JS</title>
+</head>
+
+<body ng-app="syslogjs">
+
+    <div id="header" class="container">
+        <h1>Syslog.JS</h1>
+    </div>
+    <div id="page" ng-controller="Main">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="search-bar">
+                    <input type="text" id="search-input">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2" style="margin-bottom:10px;" ng-repeat="i in [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5] track by $index">
+                    <div class="card" ng-class="stat[i]">
+
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3>Mail Server</h3>
+                        <h6>Today</h6>
+                        <p><strong>5 Errors</strong></p>
+                        <p><strong>3 Warnings</strong></p>
+                        <p><strong>1 Info</strong></p>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

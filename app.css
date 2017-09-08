@@ -1,0 +1,80 @@
+
+
+/* cleaning the nasty blue outline on input/form fields when selected */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+
+body {
+    background-color: rgb(31, 31, 31) !important;
+}
+
+#page {
+    margin: 0px 100px;
+}
+#header {
+    height: 150px;
+}
+
+.edge-danger {
+    box-shadow: 0 0 11px 2px #ff0303 !important;
+}
+/* .card-danger {
+    background-color: #ff4242 !important;
+    box-shadow: 0 0 9px 0px #ff5a5a;
+} */
+
+.card-default {
+    background-color: white;
+    box-shadow: 0 0 9px 0px #aaa;
+}
+
+
+#search-input {
+    border: none;
+    height: 100%;
+    width: 95%;
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+}
+
+.search-bar {
+    border: 1px solid white;
+    height: 50px;
+    border-radius: 32px;
+    text-align: center;
+}
+
+
+.card-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+  }
+  .card-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+  .card-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+  }
+  .card-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+  }
+
+.card {
+    border-radius: 5px;
+    padding: 7px 11px;
+    margin: 10px;
+}
