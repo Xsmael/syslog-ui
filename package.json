@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Xsmael/syslog-js#readme",
   "dependencies": {
+    "angular-bootstrap-toggle": "^0.1.2",
     "bootstrap": "^3.3.7"
   }
 }

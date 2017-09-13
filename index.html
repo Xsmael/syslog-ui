@@ -7,14 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css">
 
-    <!-- <script src="./node_modules/jquery/dist/jquery.min.js" ></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./node_modules/angular/angular.min.js"></script> -->
+    <!--  production mode
+        <script src="./node_modules/jquery/dist/jquery.min.js" ></script>
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./node_modules/angular/angular.min.js"></script> 
+        <script src="./node_modules/angular-bootstrap-toggle class="filterSwitch"/dist/angular-bootstrap-toggle class="filterSwitch".min.js"></script>
+    -->
 
     <script src="./node_modules/jquery/dist/jquery.js" ></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
     
     <script src="./app.js" ></script>
     <title>Syslog JS</title>
@@ -33,8 +38,9 @@
                     <input type="text" id="search-input">
                 </div>
             </div>
+            <!-- [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5] -->
             <div class="row">
-                <div class="col-md-2" style="margin-bottom:10px;" ng-repeat="i in [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5] track by $index">
+                <div class="col-md-2" style="margin-bottom:10px;" ng-repeat="i in [0,0,1] track by $index">
                     <div class="card" ng-class="stat[i]">
 
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -49,11 +55,61 @@
 
 
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pane">
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>Mail Server </h3>                                    
+                            </div>
+                            <div class="col-md-8">
+                                <div class="filter-bar">
+                                    <input type="text" class="filter-input" placeholder="filter">
+                                </div>
+                            </div>
+                            </div>
+                        
+                        <div class="row">
+                                <div class="pull-right filters">
+
+                                <toggle class="filterSwitch" ng-model="filter0" ng-change="changed()" on="DEBUG" off="DEBUG" onstyle="btn-success" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter1" ng-change="changed()" on="INFO" off="INFO" onstyle="btn-info" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter2" ng-change="changed()" on="NOTICE" off="NOTICE" onstyle="btn-primary" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter3" ng-change="changed()" on="WARNING" off="WARNING" onstyle="btn-warning" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter4" ng-change="changed()" on="ERROR" off="ERROR" onstyle="btn-danger" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter5" ng-change="changed()" on="CRITICAL" off="CRITICAL" onstyle="btn-danger" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter6" ng-change="changed()" on="ALERT" off="ALERT" onstyle="btn-warning" offstyle="btn-default"></toggle class="filterSwitch">
+                                <toggle class="filterSwitch" ng-model="filter7" ng-change="changed()" on="EMERGENCY" off="EMERGENCY" onstyle="btn-danger" offstyle="btn-default"></toggle class="filterSwitch">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="loglines" id="loglines">
+                                <div ng-repeat="i in logLines track by $index">
+                                {{ logs[i]}}
+
+                                </div>
+                            </div>
+                            <div class="gradient-fade"></div>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
 
-
+    <script>    
+    function scrollDown(){
+        var element = document.getElementById("loglines");
+        element.scrollTop = element.scrollHeight;
+    }
+    setInterval(function () {
+        scrollDown();
+    },500);
+    </script>
 </body>
 
 </html>
