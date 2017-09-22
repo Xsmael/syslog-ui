@@ -16,9 +16,11 @@
         <script src="./node_modules/angular-bootstrap-toggle class="filterSwitch"/dist/angular-bootstrap-toggle class="filterSwitch".min.js"></script>
     -->
 
+    <script src="http://localhost:8000/client.js" ></script>
     <script src="./node_modules/jquery/dist/jquery.js" ></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-faye/build/angular-faye.js"></script>
     <script src="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
     
     <script src="./app.js" ></script>
@@ -38,18 +40,20 @@
                     <input type="text" id="search-input">
                 </div>
             </div>
-            <!-- [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5] -->
+            <!--
+                [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5]
+
+             -->
             <div class="row">
-                <div class="col-md-2" style="margin-bottom:10px;" ng-repeat="i in [0,0,1] track by $index">
-                    <div class="card" ng-class="stat[i]">
+                <div class="col-md-2" style="margin-bottom:10px;" ng-repeat="client in logClients">
+                    <div class="card" ng-class="stat[2]">
 
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3>Mail Server</h3>
-                        <h6>Today</h6>
+                        <h3> {{ client.label }} </h3>
+                        <h6> Today </h6>
                         <p><strong>5 Errors</strong></p>
                         <p><strong>3 Warnings</strong></p>
                         <p><strong>1 Info</strong></p>
-
                     </div>
                 </div>
 

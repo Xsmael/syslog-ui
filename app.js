@@ -1,7 +1,10 @@
 
-angular.module('syslogjs',['ui.toggle'])
-
-.controller("Main", function ($rootScope, $interval) {
+angular.module('syslogjs',['ui.toggle', 'faye'])
+.factory('FayeFactory', function ($faye) {
+    return $faye("http://localhost:8000/");
+})
+.controller("Main", function ($rootScope, $interval,FayeFactory) {
+    $rootScope.logClients = [];
     $rootScope.stat= [
         'card-default',
         'card-info',
@@ -20,6 +23,19 @@ angular.module('syslogjs',['ui.toggle'])
     ];
 
     $rootScope.logLines = [0,0,1,1,0,3,0,5,2,0,0,4,1,0,0,1,1,0,3,0,5,2,0,0,0,3,5,0,0,0,1,1,0,3,0,5];
+    
+    FayeFactory.subscribe('/logClient', function(client) {
+        var exist = false;
+        $rootScope.logClients.forEach(function(c,idx) {
+            if(c.label== client.label) {
+                exist= true;
+                $rootScope.logClients[idx]= client;
+            } 
+            
+        }, this);
+        if(!exist)
+            $rootScope.logClients.push(client);        
+    })
 
     var i=0;
     $interval( function () {
